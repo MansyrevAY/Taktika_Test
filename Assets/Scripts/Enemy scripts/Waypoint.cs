@@ -1,0 +1,20 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+public class Waypoint : MonoBehaviour
+{
+    public Waypoint previousWaypoint;
+    public Waypoint nextWaypoint;
+    public List<Waypoint> branches;
+
+    [Range(0f, 5f)]
+    public float width = 1.8f;
+
+    public Vector2 GetPosition()
+    {
+        Vector2 minBound = transform.position + transform.right * width / 2f;
+        Vector2 maxBound = transform.position - transform.right * width / 2f;
+
+        return Vector2.Lerp(minBound, maxBound, Random.Range(0f, 1f));
+    }
+}
